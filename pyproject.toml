@@ -3,6 +3,7 @@ name = "galaga"
 version = "1.0.0"
 description = "A simple Galaga clone using Pygame"
 authors = ["Abhishek Prakash <abhishek.g.prakash@gmail.com>"]
+license = "MIT"
 readme = "README.md"
 packages = [{include = "pygalaga"}]
 
