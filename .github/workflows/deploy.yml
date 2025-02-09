@@ -32,4 +32,4 @@ jobs:
         run: poetry build
 
       - name: Publish to PyPI
-        run: poetry publish --build
+        run: poetry publish
