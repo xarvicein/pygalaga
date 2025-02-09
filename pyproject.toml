@@ -4,14 +4,14 @@ version = "1.0.0"
 description = "A simple Galaga clone using Pygame"
 authors = ["Abhishek Prakash <abhishek.g.prakash@gmail.com>"]
 readme = "README.md"
-packages = [{include = "galaga"}]
+packages = [{include = "pygalaga"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"
 pygame = "^2.5.0"
 
 [tool.poetry.scripts]
-galaga = "galaga.game:main"
+pygalaga = "pygalaga.game:main"
 
 [build-system]
 requires = ["poetry-core"]

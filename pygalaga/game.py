@@ -1,6 +1,6 @@
 import pygame
 import random
-from galaga.utils import get_asset_path
+from py.utils import get_asset_path
 
 # Game Constants
 WIDTH, HEIGHT = 800, 600
