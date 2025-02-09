@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "galaga"
+version = "1.0.0"
+description = "A simple Galaga clone using Pygame"
+authors = ["Abhishek Prakash <abhishek.g.prakash@gmail.com>"]
+readme = "README.md"
+packages = [{include = "galaga"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pygame = "^2.5.0"
+
+[tool.poetry.scripts]
+galaga = "galaga.game:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
