@@ -1,5 +1,6 @@
 # pygalaga
-![{DF14029D-E34E-4D9D-AF64-B25A4F336431}](https://github.com/user-attachments/assets/fb8b0f49-88fc-4028-8c54-baa04cc72d6e)
+![{ABACB63A-016A-482B-9A33-0EF2D8224F65}](https://github.com/user-attachments/assets/f921a575-8438-4816-a0a0-efbb75a96cd0)
+
 
 # Installation
 ```bash
