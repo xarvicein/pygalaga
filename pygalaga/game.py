@@ -1,7 +1,7 @@
-import time
-
-import pygame
 import random
+import pygame
+from pygame import SurfaceType
+
 from pygalaga.config import *
 from pygalaga.components import Ship, AlienRed
 
@@ -9,11 +9,11 @@ def main():
     # Initialize Pygame
     pygame.init()
     # Create Game Window
-    screen = pygame.display.set_mode((WIDTH, HEIGHT))
+    screen: SurfaceType = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption("Galaga")
 
     player = Ship()
-    enemies = [AlienRed(random.randint(0, WIDTH - 40), random.randint(-100, -40)) for _ in range(6)]
+    enemies = [AlienRed(random.randint(0, WIDTH - 40), random.randint(-100, -40)) for _ in range(2)]
     running = True
     clock = pygame.time.Clock()
 

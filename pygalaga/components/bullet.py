@@ -1,19 +1,16 @@
-import pygame
 
-from pygalaga.utils import get_asset_path
+from pygalaga.utils import load_asset
 
 
 class Bullet:
-    bullet_img = pygame.image.load(get_asset_path("missile.png"))
-    BULLET = pygame.transform.scale(bullet_img, (10, 20))
-    def __init__(self, x, y):
-        self.image = Bullet.BULLET
+    def __init__(self, x, y) -> None:
+        self.image = load_asset("missile.png", (10, 20))
         self.x = x
         self.y = y
         self.speed = 7
 
-    def move(self):
+    def move(self) -> None:
         self.y -= self.speed
 
-    def draw(self, screen):
+    def draw(self, screen) -> None:
         screen.blit(self.image, (self.x, self.y))
