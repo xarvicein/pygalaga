@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pygalaga"
-version = "1.0.2"
+version = "1.0.3"
 description = "A simple Galaga clone using Pygame"
 authors = ["Abhishek Prakash <abhishek.g.prakash@gmail.com>"]
 license = "MIT"
