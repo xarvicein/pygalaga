@@ -1,9 +1,10 @@
 import pygame
 from pygame import SurfaceType
 
-from pygalaga.utils import get_asset_path, load_asset, load_sound
+from pygalaga.utils import load_asset
+from .sounds import Sounds
 from .bullet import Bullet
-from pygalaga.config import WIDTH, HEIGHT, WHITE
+from pygalaga.config import WIDTH, HEIGHT
 
 
 class Ship:
@@ -15,7 +16,7 @@ class Ship:
         self.bullets = []
         self.last_shot_time = 0
         self.shoot_delay = 500
-        self.sound = load_sound()
+        self.sounds = Sounds()
 
     def move(self, direction) -> None:
         if direction == "left" and self.x > 0:
@@ -28,7 +29,7 @@ class Ship:
         if current_time - self.last_shot_time >= self.shoot_delay:
             self.bullets.append(Bullet(self.x + 20, self.y))
             self.last_shot_time = current_time
-            self.sound.play()
+            self.sounds.shoot.play()
 
     def draw(self, screen: SurfaceType) -> None:
         screen.blit(self.image, (self.x, self.y))

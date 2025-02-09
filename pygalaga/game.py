@@ -3,12 +3,12 @@ import pygame
 from pygame import SurfaceType
 
 from pygalaga.config import *
-from pygalaga.components import Ship, AlienRed
+from pygalaga.components import Ship, AlienRed, Sounds
+
 
 def main():
-    # Initialize Pygame
     pygame.init()
-    # Create Game Window
+
     screen: SurfaceType = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption("Galaga")
 
@@ -16,6 +16,7 @@ def main():
     enemies = [AlienRed(random.randint(0, WIDTH - 40), random.randint(-100, -40)) for _ in range(2)]
     running = True
     clock = pygame.time.Clock()
+    sounds = Sounds()
 
     while running:
         screen.fill((0, 0, 0))  # Clear screen
@@ -28,7 +29,7 @@ def main():
             player.move("left")
         if keys[pygame.K_RIGHT]:
             player.move("right")
-        if keys[pygame.K_SPACE]:
+        if keys[pygame.K_SPACE] or keys[pygame.K_UP]:
             player.shoot()
 
         # Move and draw bullets
@@ -49,8 +50,14 @@ def main():
             for enemy in enemies[:]:
                 if enemy.x < bullet.x < enemy.x + 40 and enemy.y < bullet.y < enemy.y + 40:
                     player.bullets.remove(bullet)
-                    enemies.remove(enemy)
-                    enemies.append(AlienRed(random.randint(0, WIDTH - 40), random.randint(-100, -40)))
+                    enemy.exploding = True
+                    enemy.explosion_time = pygame.time.get_ticks()
+                    sounds.explosion.play()
+
+        for enemy in enemies[:]:
+            if enemy.exploding and pygame.time.get_ticks() - enemy.explosion_time > 500:
+                enemies.remove(enemy)
+                enemies.append(AlienRed(random.randint(0, WIDTH - 40), random.randint(-100, -40)))
 
         # Draw objects
         player.draw(screen)
