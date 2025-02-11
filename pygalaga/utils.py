@@ -10,6 +10,7 @@ def load_asset(asset: str, size: tuple[int,int]):
     asset_img = pygame.image.load(get_asset_path(asset))
     return pygame.transform.scale(asset_img, size)
 
+@cache
 def load_sound(asset:str) -> SoundType:
     return pygame.mixer.Sound(get_sound_path(asset))
 
