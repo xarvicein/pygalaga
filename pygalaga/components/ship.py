@@ -2,9 +2,9 @@ import pygame
 from pygame import SurfaceType
 
 from pygalaga.utils import load_asset
+from pygalaga.config import WIDTH, HEIGHT
 from .sounds import Sounds
 from .bullet import Bullet
-from pygalaga.config import WIDTH, HEIGHT
 
 
 class Ship:
@@ -35,4 +35,3 @@ class Ship:
         screen.blit(self.image, (self.x, self.y))
         for bullet in self.bullets:
             bullet.draw(screen)
-

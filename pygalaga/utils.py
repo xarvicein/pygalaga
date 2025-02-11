@@ -1,6 +1,6 @@
 import os
-import pygame
 from functools import cache
+import pygame
 from pygame.mixer import SoundType
 from PIL import Image
 

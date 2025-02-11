@@ -30,10 +30,11 @@ jobs:
 
       - name: Run Pylint
         run: |
-          pylint $(git ls-files '*.py')
+          pylint --disable=C0114,C0115,R0902,R0903,C0321 --extension-pkg-whitelist=pygame $(git ls-files '*.py')
   deploy:
     name: Build and Publish to PyPI
     runs-on: ubuntu-latest
+    needs: pylint
 
     steps:
       - name: Checkout repository

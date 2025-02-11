@@ -2,7 +2,7 @@ import random
 import pygame
 from pygame import SurfaceType
 
-from pygalaga.config import *
+from pygalaga.config import WIDTH, HEIGHT
 from pygalaga.components import Ship, AlienRed, Sounds
 
 
