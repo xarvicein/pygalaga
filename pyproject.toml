@@ -8,9 +8,9 @@ readme = "README.md"
 packages = [{include = "pygalaga"}]
 
 [tool.poetry.dependencies]
-python = "=3.10"
-pygame = "=2.5.0"
-pillow = "=10.4.0"
+python = "^3.10"
+pygame = "^2.5.0"
+pillow = "^10.4.0"
 [tool.poetry.scripts]
 pygalaga = "pygalaga.game:main"
 
