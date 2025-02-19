@@ -1,4 +1,3 @@
-
 from pygalaga.utils import load_asset
 
 

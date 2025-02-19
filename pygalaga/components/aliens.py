@@ -23,12 +23,15 @@ class AlienRed:
         self.__exploding = val
 
     def move(self) -> None:
-        if not self.exploding: self.y += self.speed
+        if not self.exploding:
+            self.y += self.speed
 
     def draw(self, screen) -> None:
         if self.exploding:
             if self.explosion_index < len(self.explosion):
-                screen.blit(self.explosion[self.explosion_index], (self.x-20, self.y-20))
+                screen.blit(
+                    self.explosion[self.explosion_index], (self.x - 20, self.y - 20)
+                )
                 self.explosion_index += 1
             else:
                 self.exploding = False
