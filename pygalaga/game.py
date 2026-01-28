@@ -12,7 +12,7 @@ class GamePlay:
         self.play_window = WIDTH - self.panel_width
         self.screen = screen
         self.player = Ship(self.play_window)
-        self.enemies = [AlienRed(random.randint(0, self.play_window - 40), random.randint(-100, -40))]
+        self.enemies = [AlienRed(random.randint(0, self.play_window - 40), random.randint(-100, -40)) for _ in range(3)]
 
         self.clock = pygame.time.Clock()
         self.sounds = Sounds()
@@ -75,7 +75,14 @@ class GamePlay:
         pygame.draw.rect(self.screen, (15, 15, 15), (self.play_window, 0, self.panel_width, HEIGHT))
         font = pygame.font.SysFont(None, 36)
         score_text = font.render(f"Score: {self.score}", True, (255, 255, 255))
-        self.screen.blit(score_text, (self.play_window + 80, 20))
+        self.screen.blit(score_text, (self.play_window + 80, 200))
+        # show instcutions on the side panel
+        instructions = ["[ <- ] Move Left", "[ -> ] Right Arrow", "[ ^ ] Shoot", "[ Space ] Shoot"]
+        instruction_font = pygame.font.SysFont(None, 26)
+        for i, line in enumerate(instructions):
+            instruction_text = instruction_font.render(line, True, (255, 255, 255))
+            self.screen.blit(instruction_text, (self.play_window + 60, 550 + i * 30))
+
 
     def start_game_loop(self):
         while self.running:
