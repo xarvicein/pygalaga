@@ -8,16 +8,16 @@ from pygalaga.components import Ship, AlienRed, Sounds
 
 class GamePlay:
     def __init__(self, screen):
+        self.panel_width = 250
+        self.play_window = WIDTH - self.panel_width
         self.screen = screen
-        self.player = Ship()
-        self.enemies = [
-            AlienRed(random.randint(0, WIDTH - 40), random.randint(-100, -40))
-            for _ in range(2)
-        ]
+        self.player = Ship(self.play_window)
+        self.enemies = [AlienRed(random.randint(0, self.play_window - 40), random.randint(-100, -40))]
 
         self.clock = pygame.time.Clock()
         self.sounds = Sounds()
         self.running = True
+        self.score = 0
 
     def handle_key_pad_controls(self):
         keys = pygame.key.get_pressed()
@@ -40,7 +40,7 @@ class GamePlay:
             if enemy.y > HEIGHT:
                 self.enemies.remove(enemy)
                 self.enemies.append(
-                    AlienRed(random.randint(0, WIDTH - 40), random.randint(-100, -40))
+                    AlienRed(random.randint(0, self.play_window - 40), random.randint(-100, -40))
                 )
 
     def detect_bullet_enemy_collision(self):
@@ -54,14 +54,28 @@ class GamePlay:
                     enemy.exploding = True
                     enemy.explosion_time = pygame.time.get_ticks()
                     self.sounds.explosion.play()
+                    self.score += 1
+        if 10 < self.score < 100:
+            self.player.speed = self.score // 10 + 10
+            for player_bullet in self.player.bullets[:]:
+                player_bullet.speed = self.score // 10 + 5
+            for enemy in self.enemies[:]:
+                enemy.speed = self.score // 10 + 5
+
 
     def destroy_enemies_after_collision(self):
         for enemy in self.enemies[:]:
             if enemy.exploding and pygame.time.get_ticks() - enemy.explosion_time > 500:
                 self.enemies.remove(enemy)
                 self.enemies.append(
-                    AlienRed(random.randint(0, WIDTH - 40), random.randint(-100, -40))
+                    AlienRed(random.randint(0, self.play_window - 40), random.randint(-100, -40))
                 )
+
+    def draw_side_panels(self):
+        pygame.draw.rect(self.screen, (15, 15, 15), (self.play_window, 0, self.panel_width, HEIGHT))
+        font = pygame.font.SysFont(None, 36)
+        score_text = font.render(f"Score: {self.score}", True, (255, 255, 255))
+        self.screen.blit(score_text, (self.play_window + 80, 20))
 
     def start_game_loop(self):
         while self.running:
@@ -71,6 +85,7 @@ class GamePlay:
                     self.running = False
 
             self.handle_key_pad_controls()
+            self.draw_side_panels()
             self.draw_bullets()
             self.draw_enemies()
             self.detect_bullet_enemy_collision()
