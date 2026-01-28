@@ -55,7 +55,7 @@ class GamePlay:
                     enemy.explosion_time = pygame.time.get_ticks()
                     self.sounds.explosion.play()
                     self.score += 1
-        if 10 < self.score < 100:
+        if 10 < self.score < 50:
             self.player.speed = self.score // 10 + 10
             for player_bullet in self.player.bullets[:]:
                 player_bullet.speed = self.score // 10 + 5
