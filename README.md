@@ -1,5 +1,5 @@
 # pygalaga
-![{ABACB63A-016A-482B-9A33-0EF2D8224F65}](https://github.com/user-attachments/assets/f921a575-8438-4816-a0a0-efbb75a96cd0)
+<img width="815" height="548" alt="image" src="https://github.com/user-attachments/assets/ac7e954a-00eb-4e77-90d3-25b12488cdee" />
 
 
 # Installation
