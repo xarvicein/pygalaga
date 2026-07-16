@@ -12,7 +12,9 @@ class GamePlay:
         self.play_window = WIDTH - self.panel_width
         self.screen = screen
         self.player = Ship(self.play_window)
-        self.enemies = [AlienRed(random.randint(0, self.play_window - 40), random.randint(-100, -40)) for _ in range(3)]
+        self.enemies = [
+            AlienRed(random.randint(0, self.play_window - 40), random.randint(-100, -40)) for _ in range(3)
+        ]
 
         self.clock = pygame.time.Clock()
         self.sounds = Sounds()
