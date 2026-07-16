@@ -13,7 +13,10 @@ class GamePlay:
         self.screen = screen
         self.player = Ship(self.play_window)
         self.enemies = [
-            AlienRed(random.randint(0, self.play_window - 40), random.randint(-100, -40)) for _ in range(3)
+            AlienRed(
+                random.randint(0, self.play_window - 40),
+                random.randint(-100, -40)
+            ) for _ in range(3)
         ]
 
         self.clock = pygame.time.Clock()
@@ -49,8 +52,8 @@ class GamePlay:
         for bullet in self.player.bullets[:]:
             for enemy in self.enemies[:]:
                 if (
-                    enemy.x < bullet.x < enemy.x + 40
-                    and enemy.y < bullet.y < enemy.y + 40
+                        enemy.x < bullet.x < enemy.x + 40
+                        and enemy.y < bullet.y < enemy.y + 40
                 ):
                     self.player.bullets.remove(bullet)
                     enemy.exploding = True
@@ -63,7 +66,6 @@ class GamePlay:
                 player_bullet.speed = self.score // 10 + 5
             for enemy in self.enemies[:]:
                 enemy.speed = self.score // 10 + 5
-
 
     def destroy_enemies_after_collision(self):
         for enemy in self.enemies[:]:
@@ -84,7 +86,6 @@ class GamePlay:
         for i, line in enumerate(instructions):
             instruction_text = instruction_font.render(line, True, (255, 255, 255))
             self.screen.blit(instruction_text, (self.play_window + 60, 550 + i * 30))
-
 
     def start_game_loop(self):
         while self.running:
