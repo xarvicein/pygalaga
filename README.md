@@ -10,3 +10,5 @@ pip install pygalaga
 # Use below command to start the game
 pygalaga
 ```
+
+
